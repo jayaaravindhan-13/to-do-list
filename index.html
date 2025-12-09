@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📋 Task Master Pro</h1>
+            <div class="header-actions">
+                <input type="text" id="searchInput" placeholder="Search tasks..." class="search-input">
+                <button id="clearAllBtn" class="clear-btn">Clear All</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-section">
+                <div class="task-form">
+                    <h2>Add New Task</h2>
+                    <div class="form-group">
+                        <input type="text" id="taskInput" placeholder="Task description..." class="task-input">
+                    </div>
+                    <div class="form-row">
+                        <select id="categorySelect" class="form-control">
+                            <option value="work">Work</option>
+                            <option value="personal">Personal</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <select id="prioritySelect" class="form-control">
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="date" id="dueDateInput" class="form-control">
+                        <button id="addBtn" class="add-btn">Add Task</button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Filter By Status</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+
+                    <h3>Filter By Priority</h3>
+                    <div class="priority-filter">
+                        <button class="priority-btn active" data-priority="all">All</button>
+                        <button class="priority-btn" data-priority="high">🔴 High</button>
+                        <button class="priority-btn" data-priority="medium">🟡 Medium</button>
+                        <button class="priority-btn" data-priority="low">🟢 Low</button>
+                    </div>
+
+                    <h3>Filter By Category</h3>
+                    <div class="category-filter">
+                        <button class="category-btn active" data-category="all">All</button>
+                        <button class="category-btn" data-category="work">💼 Work</button>
+                        <button class="category-btn" data-category="personal">👤 Personal</button>
+                        <button class="category-btn" data-category="shopping">🛒 Shopping</button>
+                        <button class="category-btn" data-category="health">❤️ Health</button>
+                    </div>
+                </div>
+
+                <div class="sort-section">
+                    <h3>Sort By</h3>
+                    <select id="sortSelect" class="form-control">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="priority">Priority (High to Low)</option>
+                        <option value="alphabetical">Alphabetical</option>
+                    </select>
+                </div>
+
+                <div class="task-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Total</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completed</span>
+                        <span class="stat-value completed" id="completedCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Pending</span>
+                        <span class="stat-value pending" id="pendingCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Progress</span>
+                        <span class="stat-value" id="progressCount">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="tasks-container">
+                    <h2>📋 Tasks</h2>
+                    <ul id="taskList" class="task-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="chart-wrapper">
+                    <h2>📊 Completion Status</h2>
+                    <div class="chart-container">
+                        <canvas id="taskChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h2>📈 By Priority</h2>
+                    <div class="chart-container">
+                        <canvas id="priorityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-wrapper">
+                    <h2>📁 By Category</h2>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
